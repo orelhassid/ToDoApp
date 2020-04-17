@@ -1,0 +1,26 @@
+.layout-container {
+  display: grid;
+  grid-template-columns: 10px 1fr 10px;
+  grid-template-rows: 100px 50px 1fr;
+  grid-template-areas:
+    ". header ."
+    ". actionBar ."
+    ". body .";
+}
+
+header {
+  grid-area: header;
+  width: 340px;
+  height: 100px;
+  margin: 0 auto;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.layout-actionBar {
+  grid-area: actionBar;
+}
+
+.layout-body {
+  grid-area: body;
+  min-height: 240px;
+}

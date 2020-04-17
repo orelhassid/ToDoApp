@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("./colors.module.scss");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Quicksand", sans-serif;
+  background-color: #ffffff;
+  font-family: Quicksand;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.25;
+  text-align: left;
+  color: #212121;
+}
+
+li {
+  list-style: none;
+}

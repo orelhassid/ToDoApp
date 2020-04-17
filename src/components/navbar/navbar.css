@@ -1,0 +1,7 @@
+body {
+  background: #eeee;
+}
+
+.navbar {
+  display: flex;
+}
