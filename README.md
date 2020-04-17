@@ -1,9 +1,9 @@
-### To-Do React App
+# To-Do React App
 
-# Introduction
+## Introduction
 
 Hello my name is Orel Hassid and I am Front-End Developer :)
 
-# To-Do App
+## To-Do App
 
 A modern User Interface thats makes it easy to Interact.
