@@ -8,14 +8,27 @@
     ". body .";
 }
 
-header {
+header.layout-header {
   grid-area: header;
-  width: 340px;
+  display: flex;
+  flex-flow: column;
   height: 100px;
-  margin: 0 auto;
   border-bottom: 1px solid #eeeeee;
+  padding: 10px 10px 20px 10px;
+}
+header .page-title {
+  padding: 0 20pt;
 }
 
+.header-icons {
+  display: flex;
+  justify-content: space-between;
+}
+.avatar {
+  width: 28px;
+  height: 28px;
+  align-self: flex-end;
+}
 .layout-actionBar {
   grid-area: actionBar;
 }

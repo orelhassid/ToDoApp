@@ -1,0 +1,32 @@
+.taskList {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 10pt;
+  width: 100%;
+  height: 112px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+.taskList .border {
+  position: absolute;
+  width: 7px;
+  height: 100%;
+  background-color: #ff501f;
+}
+.taskList .text {
+  display: flex;
+  flex-flow: column;
+  margin-left: 20px;
+  margin-top: 27pt;
+}
+
+.taskList .info {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin-right: 20pt;
+}
