@@ -1,4 +1,4 @@
-// import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 export function getLists() {
   return [
@@ -32,16 +32,6 @@ export function getLists() {
         { name: "Task name", status: "completed" },
       ],
     },
-    {
-      id: 4,
-      name: "List name4",
-      desc: "List desc",
-      tasks: [
-        { name: "Task name", status: "completed" },
-        { name: "Task name", status: "completed" },
-        { name: "Task name", status: "completed" },
-      ],
-    },
   ];
 }
 
@@ -49,4 +39,13 @@ export function getSingleList(id) {
   id = parseInt(id);
   const list = getLists().find((list) => list.id === id);
   return list;
+}
+
+export function addList(name) {
+  const lists = getLists();
+  lists.push({
+    id: uuidv4(),
+    name: name,
+  });
+  console.log("AddList", lists);
 }
