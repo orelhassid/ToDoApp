@@ -1,0 +1,22 @@
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 72px);
+  grid-gap: 20px;
+}
+
+.card-tasklist {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0 17px 0 30px;
+  /* height: 72px; */
+  background: #272b38;
+  box-shadow: 0 10px 6px rgba(25, 30, 47, 0.32);
+}
+
+.tasklist-text {
+  display: flex;
+  flex-flow: column;
+}

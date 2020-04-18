@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContextProvider, { ThemeContext } from "./contexts/themeContext";
 import { Switch, Route } from "react-router-dom";
-import HomePage from "./components/pages/homePage";
-
+import "./css/layout.css";
+import HomePage from "./pages/homePage";
+import ListPage from "./pages/listPage";
 function App() {
+  const name = useContext(ThemeContext);
+  console.log(name);
+
   return (
-    <div className="App">
-      <div className="wrapper">
+    <ThemeContextProvider>
+      <div className="App Screen">
         <Switch>
+          <Route path="/lists/:id" component={ListPage} />
           <Route path="/" component={HomePage} />
         </Switch>
       </div>
-    </div>
+    </ThemeContextProvider>
   );
 }
 
