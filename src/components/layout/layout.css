@@ -31,9 +31,16 @@ header .page-title {
 }
 .layout-actionBar {
   grid-area: actionBar;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 50px;
+  padding: 0 0.5rem;
 }
 
 .layout-body {
   grid-area: body;
   min-height: 240px;
+  padding: 0 0.5rem;
 }

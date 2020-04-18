@@ -1,5 +1,5 @@
 import React from "react";
-import "./layout.module.scss";
+import "./layout.css";
 
 const Navigation = () => {
   return <h1>Navigation Component</h1>;

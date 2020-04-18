@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import "./style/normalize.module.scss";
-import "./style/index.module.scss";
+import "./assets/css/normalize.css";
+import "./assets/css/index.css";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

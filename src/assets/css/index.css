@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("./colors.module.scss");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Quicksand", sans-serif;
+  background-color: #ffffff;
+  font-family: Quicksand;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.25;
+  text-align: left;
+  color: #212121;
+}
+
+li {
+  list-style: none;
+}
+input {
+  border: none;
+  position: relative;
+  width: 100%;
+  height: 30px;
+  opacity: 0.6;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: left;
+  color: #6d6d6d;
+  padding: 0 15px;
+  outline: none;
+  /* border-bottom: 0.5px solid #a7a7a7; */
+}
+
+input::after {
+  content: " ";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.5px;
+  background-color: #a7a7a7;
+  color: #212121;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 50%;
+  background: #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.btn-fab {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background: #1fa5fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
