@@ -1,0 +1,15 @@
+.btn-fab {
+  position: fixed;
+  bottom: 15pt;
+  right: 15pt;
+  width: 56px;
+  height: 56px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  transition: filter 300ms;
+}
+.btn-fab:hover {
+  filter: brightness(1.5);
+}
+.btn-rounded {
+  border-radius: 50%;
+}

@@ -26,3 +26,16 @@
   border: none;
   outline: none;
 }
+.form-floating {
+  padding: 20px;
+  width: 90%;
+  min-height: 200px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  background: rgba(39, 43, 56, 1);
+  /* box-shadow: 0 25px 24px #191e2f; */
+}
+.form-title {
+}

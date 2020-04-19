@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "./form.css";
 import { ReactComponent as AddIcon } from "../../assets/icons/add.svg";
-import { addList } from "./../../services/listsService";
+import { addList } from "./../../services/todoService";
 
 const InputList = ({ placeholder }) => {
   const [listName, setListName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!e.currentTarget.value) return;
+    // if (!e.currentTarget.value) return;
     setListName("");
     addList(listName);
     console.log("Submited");

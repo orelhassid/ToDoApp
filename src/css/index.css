@@ -24,3 +24,19 @@ body {
   color: #1eb980;
   fill: #1eb980;
 }
+.danger {
+  color: #ff4557;
+  fill: #ff4557;
+}
+
+.bg-red {
+  background: #ff4557;
+}
+.border-bottom {
+  position: absolute;
+  bottom: -6px;
+  display: block;
+  width: 80%;
+  height: 1px;
+  background: #676767;
+}

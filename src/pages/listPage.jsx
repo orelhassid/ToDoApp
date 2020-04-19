@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./layout/header";
 import Actionbar from "./layout/actionbar";
 import Body from "./layout/body";
-import { getSingleList } from "../services/listsService";
+import { getSingleList } from "../services/todoService";
 
 const ListPage = ({ match }) => {
   const list = getSingleList(match.params.id);
