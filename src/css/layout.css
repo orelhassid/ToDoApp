@@ -20,6 +20,7 @@ header.page-header .page-top {
 }
 .page-title {
   padding: 0 20px;
+  text-transform: capitalize;
 }
 
 /*

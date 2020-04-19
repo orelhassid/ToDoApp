@@ -7,7 +7,8 @@ export const TodoReducer = (state, action) => {
         ...state,
         {
           id: uuid(),
-          name: action.title,
+          name: action.name,
+          desc: action.desc,
         },
       ];
     case "REMOVE_LIST":

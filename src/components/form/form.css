@@ -31,7 +31,7 @@
   width: 90%;
   min-height: 200px;
   position: fixed;
-  left: 50%;
+  right: 20px;
   transform: translateX(-50%);
   bottom: 0;
   background: rgba(39, 43, 56, 1);

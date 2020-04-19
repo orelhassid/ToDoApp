@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./css/normalize.css";
 import "./css/index.css";
+import "./css/animation.css";
+
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 

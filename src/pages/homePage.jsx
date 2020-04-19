@@ -26,14 +26,16 @@ const HomePage = () => {
         <TasksLists />
       </Body>
       <FAB onClick={handleTaskList} />
-      {isFormOpen && <TaskListForm />}
+      {isFormOpen && (
+        <TaskListForm onSubmit={() => setFormDisplay(!isFormOpen)} />
+      )}
     </React.Fragment>
   );
 };
 
 const TasksLists = () => {
   const { lists } = useContext(TodoContext);
-  if (lists == []) {
+  if (lists) {
     return (
       <ul className="cards-container">
         {lists.map((list) => (
