@@ -40,3 +40,7 @@ body {
   height: 1px;
   background: #676767;
 }
+
+input[type="radio"] {
+  background: #676767;
+}

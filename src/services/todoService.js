@@ -9,7 +9,7 @@ export function getLists() {
 export function getSingleList(id) {
   let lists = localStorage.getItem("lists");
   lists = JSON.parse(lists);
-  return lists.find((list) => list.id == id);
+  return lists.find((list) => list.id === id);
 }
 
 export function addList(name) {
@@ -19,4 +19,14 @@ export function addList(name) {
   };
   localStorage.setItem("lists", JSON.stringify(value));
   // console.log("AddList", getLists());
+}
+
+export function addTask(listId, task) {
+  const lists = JSON.parse(localStorage.getItem("lists"));
+  const list = lists.find((list) => list.id === listId);
+
+  list.tasks.push({
+    id: uuidv4(),
+    name: task.name,
+  });
 }

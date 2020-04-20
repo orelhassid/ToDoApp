@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
-import ThemeContextProvider, { ThemeContext } from "./contexts/themeContext";
+import React from "react";
+import ThemeContextProvider from "./contexts/themeContext";
 import { Switch, Route } from "react-router-dom";
 import "./css/layout.css";
 import HomePage from "./pages/homePage";
 import ListPage from "./pages/listPage";
 import TodoContextProvider from "./contexts/todoContext";
+
 function App() {
   return (
     <ThemeContextProvider>

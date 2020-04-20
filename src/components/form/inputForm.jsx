@@ -3,7 +3,7 @@ import "./form.css";
 import { ReactComponent as AddIcon } from "../../assets/icons/add.svg";
 import { addList } from "./../../services/todoService";
 
-const InputList = ({ placeholder }) => {
+const InputForm = ({ placeholder }) => {
   const [listName, setListName] = useState("");
 
   const handleSubmit = (e) => {
@@ -31,4 +31,4 @@ const InputList = ({ placeholder }) => {
   );
 };
 
-export default InputList;
+export default InputForm;

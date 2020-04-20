@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import Header from "./layout/header";
 import Actionbar from "./layout/actionbar";
 import Body from "./layout/body";
 import { getSingleList } from "../services/todoService";
-import { TodoContext } from "./../contexts/todoContext";
+import InputForm from "../components/form/inputForm";
+import FAB from "../components/buttons/fab";
+import TaskCard from "./../components/cards/taskCard";
 
 const ListPage = ({ match }) => {
   const listId = match.params.id;
@@ -13,8 +15,13 @@ const ListPage = ({ match }) => {
   return (
     <React.Fragment>
       <Header title={list.name} />
-      <Actionbar></Actionbar>
-      <Body></Body>
+      <Actionbar>
+        <InputForm placeholder="My new task is..." />
+      </Actionbar>
+      <Body>
+        <TaskCard />
+      </Body>
+      <FAB />
     </React.Fragment>
   );
 };

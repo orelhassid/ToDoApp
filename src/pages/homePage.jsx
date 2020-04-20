@@ -3,7 +3,7 @@ import Header from "./layout/header";
 import Actionbar from "./layout/actionbar";
 import Body from "./layout/body";
 import ListCard from "./../components/cards/listCard";
-import InputList from "../components/form/inputList";
+import InputForm from "../components/form/inputForm";
 import { TodoContext } from "../contexts/todoContext";
 import FAB from "../components/buttons/fab";
 import TaskListForm from "../components/form/taskListForm";
@@ -20,7 +20,7 @@ const HomePage = () => {
       <Header title="Home Page" />
 
       <Actionbar>
-        <InputList placeholder="Create new task..." />
+        <InputForm placeholder="Create new task..." />
       </Actionbar>
       <Body>
         <TasksLists />
