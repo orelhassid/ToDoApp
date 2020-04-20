@@ -9,6 +9,7 @@ import TaskCard from "./../components/cards/taskCard";
 
 const ListPage = ({ match, history }) => {
   const listId = match.params.id;
+  console.log("List Not!");
   const list = getSingleList(listId);
   if (!list) {
     console.log("List Not Found!");

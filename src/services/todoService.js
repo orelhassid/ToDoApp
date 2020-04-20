@@ -9,7 +9,7 @@ export function getLists() {
 export function getSingleList(id) {
   let lists = localStorage.getItem("lists");
   lists = JSON.parse(lists);
-  return lists.find((list) => list.id === id);
+  return lists && lists.find((list) => list.id === id);
 }
 
 export function addList(name) {

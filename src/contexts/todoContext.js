@@ -5,6 +5,7 @@ export const TodoContext = createContext();
 const TodoContextProvider = ({ children }) => {
   const [lists, dispatch] = useReducer(TodoReducer, [], () => {
     const localData = localStorage.getItem("lists");
+    if (localData === {}) return [localData];
     return localData ? JSON.parse(localData) : [];
   });
 

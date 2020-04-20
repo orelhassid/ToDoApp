@@ -18,6 +18,9 @@ svg {
   width: 24px;
   height: 24px;
 }
+li {
+  list-style-type: none;
+}
 h1,
 h2,
 h3,

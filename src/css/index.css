@@ -59,3 +59,13 @@ input[type="radio"] {
 .text-center {
   text-align: center;
 }
+.icon-controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55pt;
+}
+
+.icon-controller img {
+  width: 100%;
+}

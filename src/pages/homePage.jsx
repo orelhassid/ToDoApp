@@ -7,12 +7,20 @@ import InputForm from "../components/form/inputForm";
 import { TodoContext } from "../contexts/todoContext";
 import FAB from "../components/buttons/fab";
 import TaskListForm from "../components/form/taskListForm";
+import Dropbox from "../components/form/dropbox";
 
 const HomePage = () => {
   const [isFormOpen, setFormDisplay] = useState(false);
+
   const handleTaskList = () => {
+    document.body.style.pointerEvents = "none";
     setFormDisplay(!isFormOpen);
     console.log("Clicked!");
+  };
+
+  const handleForm = () => {
+    setFormDisplay(!isFormOpen);
+    document.body.style.pointerEvents = "all";
   };
 
   return (
@@ -26,9 +34,7 @@ const HomePage = () => {
         <TasksLists />
       </Body>
       <FAB onClick={handleTaskList} />
-      {isFormOpen && (
-        <TaskListForm onSubmit={() => setFormDisplay(!isFormOpen)} />
-      )}
+      {isFormOpen && <TaskListForm onSubmit={() => handleForm()} />}
     </React.Fragment>
   );
 };

@@ -1,17 +1,18 @@
 .cards-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 72px);
+  grid-template-rows: auto;
   grid-gap: 20px;
 }
 
 .card-tasklist {
+  position: relative;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
   padding: 0 17px 0 30px;
-  /* height: 72px; */
+  height: 72px;
   background: #272b38;
   box-shadow: 0 10px 6px rgba(25, 30, 47, 0.32);
 }
@@ -59,4 +60,40 @@
 
 .taskcard-status {
   font-size: 12px;
+}
+
+.taskList-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  background: #242834;
+  border-radius: 50%;
+}
+.dropbox {
+  position: absolute;
+  top: 70%;
+  right: 10px;
+  width: 120px;
+  max-width: 200px;
+  height: auto;
+  z-index: 1;
+}
+
+.dropbox-list {
+  display: flex;
+  flex-flow: column;
+}
+.dropbox-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 17px 0;
+  padding-left: 15px;
+  background: #272b38;
+  box-shadow: 0 10px 15px rgba(25, 30, 47, 0.32);
+  transition: filter 300ms;
+}
+.dropbox-item:hover {
+  filter: brightness(1.5);
 }
