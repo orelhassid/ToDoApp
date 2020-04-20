@@ -7,11 +7,14 @@ import InputForm from "../components/form/inputForm";
 import FAB from "../components/buttons/fab";
 import TaskCard from "./../components/cards/taskCard";
 
-const ListPage = ({ match }) => {
+const ListPage = ({ match, history }) => {
   const listId = match.params.id;
   const list = getSingleList(listId);
-  console.log("list", list);
-  //   console.log(match.params.id);
+  if (!list) {
+    console.log("List Not Found!");
+    history.replace("/notfound");
+    return null;
+  }
   return (
     <React.Fragment>
       <Header title={list.name} />

@@ -44,3 +44,18 @@ body {
 input[type="radio"] {
   background: #676767;
 }
+.page-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.page-notfound {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: 200px;
+}
+.text-center {
+  text-align: center;
+}
