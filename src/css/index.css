@@ -69,3 +69,7 @@ input[type="radio"] {
 .icon-controller img {
   width: 100%;
 }
+.hover:hover {
+  transition: filter 300ms;
+  filter: brightness(1.2);
+}

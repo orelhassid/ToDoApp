@@ -1,26 +1,33 @@
-import React, { useContext, useState } from "react";
-import Header from "./layout/header";
-import Actionbar from "./layout/actionbar";
-import Body from "./layout/body";
+import React, { useState, useContext } from "react";
+import { Header, Body, Actionbar } from "./layout/layout";
+
 import ListCard from "./../components/cards/listCard";
 import InputForm from "../components/form/inputForm";
-import { TodoContext } from "../contexts/todoContext";
 import FAB from "../components/buttons/fab";
 import TaskListForm from "../components/form/taskListForm";
-import Dropbox from "../components/form/dropbox";
+import { TodoContext } from "./../contexts/todoContext";
 
 const HomePage = () => {
+  const { lists, dispatch } = useContext(TodoContext);
   const [isFormOpen, setFormDisplay] = useState(false);
 
   const handleTaskList = () => {
     document.body.style.pointerEvents = "none";
     setFormDisplay(!isFormOpen);
-    console.log("Clicked!");
   };
 
-  const handleForm = () => {
+  const handleForm = (list) => {
     setFormDisplay(!isFormOpen);
     document.body.style.pointerEvents = "all";
+    dispatch({ type: "add", list });
+  };
+
+  const addListName = (listName) => {
+    console.log({ listName });
+    const list = {
+      name: listName,
+    };
+    dispatch({ type: "add", list });
   };
 
   return (
@@ -28,30 +35,24 @@ const HomePage = () => {
       <Header title="Home Page" />
 
       <Actionbar>
-        <InputForm placeholder="Create new task..." />
+        <InputForm placeholder="Create new list..." onSubmit={addListName} />
       </Actionbar>
       <Body>
-        <TasksLists />
+        <ul className="cards-container">
+          {lists.map((list) => (
+            <ListCard
+              key={list.id}
+              listId={list.id}
+              name={list.name}
+              desc={list.desc}
+            />
+          ))}
+        </ul>
       </Body>
       <FAB onClick={handleTaskList} />
-      {isFormOpen && <TaskListForm onSubmit={() => handleForm()} />}
+      {isFormOpen && <TaskListForm onSubmit={handleForm} />}
     </React.Fragment>
   );
-};
-
-const TasksLists = () => {
-  const { lists } = useContext(TodoContext);
-  if (lists) {
-    return (
-      <ul className="cards-container">
-        {lists.map((list) => (
-          <ListCard id={list.id} name={list.name} desc={list.desc} />
-        ))}
-      </ul>
-    );
-  } else {
-    return <p>There is no tasks list yet.</p>;
-  }
 };
 
 export default HomePage;

@@ -1,29 +1,49 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "./layout/header";
 import Actionbar from "./layout/actionbar";
 import Body from "./layout/body";
-import { getSingleList } from "../services/todoService";
 import InputForm from "../components/form/inputForm";
 import FAB from "../components/buttons/fab";
 import TaskCard from "./../components/cards/taskCard";
+import { TodoContext } from "./../contexts/todoContext";
 
 const ListPage = ({ match, history }) => {
+  const { lists, getList, dispatch } = useContext(TodoContext);
+
   const listId = match.params.id;
-  console.log("List Not!");
-  const list = getSingleList(listId);
+  const list = getList(listId);
+
   if (!list) {
     console.log("List Not Found!");
     history.replace("/notfound");
     return null;
   }
+
+  const handleAddTask = (taskName) => {
+    if (taskName === "") return;
+    const task = {
+      name: taskName,
+      status: "To-Do",
+    };
+    dispatch({ type: "addTask", list, task });
+  };
   return (
     <React.Fragment>
       <Header title={list.name} />
       <Actionbar>
-        <InputForm placeholder="My new task is..." />
+        <InputForm placeholder="My new task is..." onSubmit={handleAddTask} />
       </Actionbar>
       <Body>
-        <TaskCard />
+        <ul className="cards-container">
+          {list.tasks.map((task) => (
+            <TaskCard
+              key={task.id}
+              status={task.status}
+              name={task.name}
+              isChecked={task.isChecked}
+            />
+          ))}
+        </ul>
       </Body>
       <FAB />
     </React.Fragment>

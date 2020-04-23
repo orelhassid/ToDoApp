@@ -1,20 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Input from "./input";
 import { Headline6 } from "./../typography/typography";
 import Button from "../buttons/button";
-import { TodoContext } from "./../../contexts/todoContext";
 
 const TaskListForm = ({ onSubmit }) => {
-  const { dispatch } = useContext(TodoContext);
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: "ADD_LIST", name, desc });
+    const list = {
+      name,
+      desc,
+    };
     setName("");
     setDesc("");
-    onSubmit();
+    onSubmit(list);
   };
 
   return (

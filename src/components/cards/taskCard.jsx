@@ -1,32 +1,34 @@
-import React, { useState } from "react";
-import { ReactComponent as RadioCheck } from "../../assets/icons/radio_check.svg";
-import { ReactComponent as RadioUncheck } from "../../assets/icons/radio_uncheck.svg";
-import Input from "./../form/input";
+import React, { useState, useEffect } from "react";
+import "./cards.css";
 
-const TaskCard = () => {
-  const [checked, setChecked] = useState(false);
-  const [taskName, setTaskName] = useState("");
+const TaskCard = ({ status, name, isChecked }) => {
+  const [checked, setChecked] = useState(isChecked);
+  const [inputValue, setInputValue] = useState("");
 
+  useEffect(() => {
+    setInputValue(name);
+    setChecked(isChecked);
+  });
   const handleClick = () => {
     setChecked(!checked);
   };
 
   const handleNameChange = ({ currentTarget: input }) => {
-    setChecked(false);
-    setTaskName(input.value);
+    isChecked = false;
+    setInputValue(input.value);
   };
   return (
     <div className="taskcard" onClick={handleClick}>
       <div className="taskcard-input">
         <span className="input-radio">
-          <input type="checkbox" checked={checked} />
+          <input type="checkbox" checked={isChecked} />
         </span>
         <span className="input-label">
-          <input type="text" value={taskName} onChange={handleNameChange} />
+          <input type="text" value={inputValue} onChange={handleNameChange} />
         </span>
       </div>
 
-      <div className="taskcard-status">Completed</div>
+      <div className="taskcard-status status-todo">{status}</div>
     </div>
   );
 };
