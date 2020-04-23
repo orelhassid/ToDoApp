@@ -27,6 +27,11 @@ const ListPage = ({ match, history }) => {
     };
     dispatch({ type: "addTask", list, task });
   };
+
+  const onTaskChange = (task) => {
+    dispatch({ type: "updateTask", list, task });
+    console.log({ task });
+  };
   return (
     <React.Fragment>
       <Header title={list.name} />
@@ -36,12 +41,7 @@ const ListPage = ({ match, history }) => {
       <Body>
         <ul className="cards-container">
           {list.tasks.map((task) => (
-            <TaskCard
-              key={task.id}
-              status={task.status}
-              name={task.name}
-              isChecked={task.isChecked}
-            />
+            <TaskCard key={task.id} task={task} onChange={onTaskChange} />
           ))}
         </ul>
       </Body>

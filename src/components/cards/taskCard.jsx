@@ -1,34 +1,52 @@
 import React, { useState, useEffect } from "react";
 import "./cards.css";
 
-const TaskCard = ({ status, name, isChecked }) => {
-  const [checked, setChecked] = useState(isChecked);
-  const [inputValue, setInputValue] = useState("");
+const TaskCard = (props) => {
+  const { id, name, status, isChecked } = props.task;
+  let [task, setTask] = useState({
+    id,
+    name,
+    status,
+    isChecked,
+  });
 
   useEffect(() => {
-    setInputValue(name);
-    setChecked(isChecked);
+    // setTask(props.task);
   });
+
   const handleClick = () => {
-    setChecked(!checked);
+    // newTask.isChecked = !newTask.isChecked;
   };
 
-  const handleNameChange = ({ currentTarget: input }) => {
-    isChecked = false;
-    setInputValue(input.value);
+  const handleChange = ({ currentTarget: input }) => {
+    const newTask = { ...task };
+    newTask[input.name] = input.value;
+    setTask(newTask);
+    props.onChange(task);
+    console.log(newTask);
   };
   return (
     <div className="taskcard" onClick={handleClick}>
       <div className="taskcard-input">
         <span className="input-radio">
-          <input type="checkbox" checked={isChecked} />
+          <input
+            name="check"
+            type="checkbox"
+            onChange={handleChange}
+            checked={task.isChecked}
+          />
         </span>
         <span className="input-label">
-          <input type="text" value={inputValue} onChange={handleNameChange} />
+          <input
+            name="name"
+            type="text"
+            value={task.name}
+            onChange={handleChange}
+          />
         </span>
       </div>
 
-      <div className="taskcard-status status-todo">{status}</div>
+      <div className="taskcard-status status-todo">{task.status}</div>
     </div>
   );
 };
