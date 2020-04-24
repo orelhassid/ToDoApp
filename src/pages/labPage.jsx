@@ -35,6 +35,7 @@ const LabPage = () => {
 
   const updateTask = (list, task) => {
     task.name = "New Task Name";
+    console.log("LAB - Task", task);
     dispatch({ type: "updateTask", list, task });
   };
 

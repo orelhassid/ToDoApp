@@ -47,16 +47,13 @@ export const TodoReducer = (state, action) => {
       return lists;
 
     case "updateTask":
+      action.task.isChecked
+        ? (action.task.status = "Completed")
+        : (action.task.status = "To-Do");
       tasks = [...state[index].tasks];
       task = tasks.find((task) => task.id === action.task.id);
-      taskModel = {
-        id: task.id,
-        name: action.name || task.name,
-        status: action.status || task.status,
-        isChecked: task.isChecked,
-      };
       const taskIndex = tasks.indexOf(task);
-      tasks[taskIndex] = task;
+      tasks[taskIndex] = action.task;
       list.tasks = tasks;
       lists[index] = list;
       return lists;

@@ -14,25 +14,28 @@ const TaskCard = (props) => {
     // setTask(props.task);
   });
 
-  const handleClick = () => {
-    // newTask.isChecked = !newTask.isChecked;
-  };
+  const handleClick = () => {};
 
   const handleChange = ({ currentTarget: input }) => {
     const newTask = { ...task };
     newTask[input.name] = input.value;
+    if (input.name === "isChecked") {
+      input.value === "true"
+        ? (newTask.isChecked = false)
+        : (newTask.isChecked = true);
+    }
     setTask(newTask);
-    props.onChange(task);
-    console.log(newTask);
+    props.onChange(newTask);
   };
   return (
-    <div className="taskcard" onClick={handleClick}>
+    <div className="taskcard">
       <div className="taskcard-input">
         <span className="input-radio">
           <input
-            name="check"
+            name="isChecked"
             type="checkbox"
             onChange={handleChange}
+            value={task.isChecked}
             checked={task.isChecked}
           />
         </span>
@@ -46,7 +49,12 @@ const TaskCard = (props) => {
         </span>
       </div>
 
-      <div className="taskcard-status status-todo">{task.status}</div>
+      <div className={`taskcard-status`}>
+        <span
+          className={`status-indicator status-${task.status.toLowerCase()}`}
+        ></span>
+        <span className="status-label">{task.status}</span>
+      </div>
     </div>
   );
 };

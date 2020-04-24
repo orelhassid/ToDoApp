@@ -30,7 +30,6 @@ const ListPage = ({ match, history }) => {
 
   const onTaskChange = (task) => {
     dispatch({ type: "updateTask", list, task });
-    console.log({ task });
   };
   return (
     <React.Fragment>

@@ -54,13 +54,6 @@
   background: none;
   width: 100%;
 }
-.taskcard-status {
-  text-align: right;
-}
-
-.taskcard-status {
-  font-size: 12px;
-}
 
 .taskList-icon {
   display: flex;
@@ -98,12 +91,33 @@
   filter: brightness(1.5);
 }
 
-.status-todo::before {
-  content: " ";
+.status-completed::before {
+  background: green;
+}
+
+.taskcard-status {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.taskcard-status {
+  font-size: 12px;
+}
+
+.status-indicator {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   margin-right: 8px;
   display: inline-block;
+}
+
+.status-completed {
+  background: #1eb980;
+}
+
+.status-to-do {
   background: #4186ff;
 }
