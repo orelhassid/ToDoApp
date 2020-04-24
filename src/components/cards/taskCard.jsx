@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./cards.css";
 
 const TaskCard = (props) => {
-  const { id, name, status, isChecked } = props.task;
+  const { id, listId, name, status, isChecked } = props.task;
   let [task, setTask] = useState({
     id,
     name,
+    listId,
     status,
     isChecked,
   });
@@ -28,7 +29,7 @@ const TaskCard = (props) => {
     props.onChange(newTask);
   };
   return (
-    <div className="taskcard">
+    <div className={`taskcard ${task.name === "" ? "slide-right" : ""}`}>
       <div className="taskcard-input">
         <span className="input-radio">
           <input

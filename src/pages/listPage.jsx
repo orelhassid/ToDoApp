@@ -24,15 +24,19 @@ const ListPage = ({ match, history }) => {
     const task = {
       name: taskName,
       status: "To-Do",
+      listId,
     };
     dispatch({ type: "addTask", list, task });
   };
 
   const onTaskChange = (task) => {
     if (task.name === "") {
-      return dispatch({ type: "removeTask", list, task });
-    }
-    dispatch({ type: "updateTask", list, task });
+      console.log("Timneout", task);
+      console.log("Timneout", list);
+      setTimeout((list, task) => {
+        return dispatch({ type: "removeTask", list, task });
+      }, 1000);
+    } else dispatch({ type: "updateTask", list, task });
   };
   return (
     <React.Fragment>

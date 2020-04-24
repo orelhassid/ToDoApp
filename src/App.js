@@ -8,6 +8,7 @@ import NotFoundPage from "./pages/notFoundPage";
 import UserPage from "./pages/userPage";
 import LabPage from "./pages/labPage";
 import "./css/layout.css";
+import TasksPage from "./pages/tasksPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <div className="App Screen">
             <Switch>
               <Route path="/notfound" component={NotFoundPage} />
+              <Route path="/tasks" component={TasksPage} />
 
               <Route path="/lab" component={LabPage} />
               <Route path="/lists/:id" component={ListPage} />

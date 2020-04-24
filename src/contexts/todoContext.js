@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useEffect, useReducer, useState } from "react";
 import TodoReducer from "./todoReducer";
 export const TodoContext = createContext();
 
@@ -8,6 +8,14 @@ const TodoContextProvider = ({ children }) => {
     return localData ? JSON.parse(localData) : [];
   });
 
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const newTasks = [];
+    for (let list of lists) for (let task of list.tasks) newTasks.push(task);
+    setTasks(newTasks);
+  }, []);
+
   useEffect(() => {
     localStorage.setItem("lists", JSON.stringify(lists));
   }, [lists]);
@@ -15,11 +23,12 @@ const TodoContextProvider = ({ children }) => {
   const getList = (listId) => {
     // let lists = localStorage.getItem("lists");
     // lists = JSON.parse(lists);
-    return lists && lists.find((list) => list.id === listId);
+    console.log({ listId });
+    return lists.find((list) => list.id === listId);
   };
 
   return (
-    <TodoContext.Provider value={{ lists, getList, dispatch }}>
+    <TodoContext.Provider value={{ lists, tasks, getList, dispatch }}>
       {children}
     </TodoContext.Provider>
   );

@@ -27,9 +27,10 @@ export const TodoReducer = (state, action) => {
 
     case "addTask":
       tasks = [...state[index].tasks];
-      const { name, status } = action.task;
+      const { name, status, listId } = action.task;
       taskModel = {
         id: uuid(),
+        listId,
         name,
         status,
         isChecked: status === "completed" ? true : false,
