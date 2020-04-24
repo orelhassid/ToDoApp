@@ -29,6 +29,9 @@ const ListPage = ({ match, history }) => {
   };
 
   const onTaskChange = (task) => {
+    if (task.name === "") {
+      return dispatch({ type: "removeTask", list, task });
+    }
     dispatch({ type: "updateTask", list, task });
   };
   return (
