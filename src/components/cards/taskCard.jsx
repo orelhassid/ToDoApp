@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./cards.css";
 
 const TaskCard = (props) => {
@@ -11,12 +11,6 @@ const TaskCard = (props) => {
     isChecked,
   });
 
-  useEffect(() => {
-    // setTask(props.task);
-  });
-
-  const handleClick = () => {};
-
   const handleChange = ({ currentTarget: input }) => {
     const newTask = { ...task };
     newTask[input.name] = input.value;
@@ -26,10 +20,11 @@ const TaskCard = (props) => {
         : (newTask.isChecked = true);
     }
     setTask(newTask);
+    console.log("Heelo");
     props.onChange(newTask);
   };
   return (
-    <div className={`taskcard ${task.name === "" ? "slide-right" : ""}`}>
+    <div className={`taskcard`}>
       <div className="taskcard-input">
         <span className="input-radio">
           <input
@@ -46,6 +41,7 @@ const TaskCard = (props) => {
             type="text"
             value={task.name}
             onChange={handleChange}
+            autoComplete="off"
           />
         </span>
       </div>

@@ -7,7 +7,8 @@ import { ReactComponent as More } from "../../assets/icons/more_horiz.svg";
 import Dropbox from "../form/dropbox";
 import { TodoContext } from "../../contexts/todoContext";
 
-const ListCard = ({ name, desc, listId }) => {
+const ListCard = ({ list }) => {
+  const { name, desc, id } = list;
   const history = useHistory();
   const [dropbox, setDropbox] = useState(false);
   const { dispatch } = useContext(TodoContext);
@@ -21,12 +22,12 @@ const ListCard = ({ name, desc, listId }) => {
     e.stopPropagation();
     setDropbox(!dropbox);
     //Remove the list
-    dispatch({ type: "remove", listId });
+    dispatch({ type: "remove", list });
   };
   return (
     <div
       className="card-tasklist pointer hover"
-      onClick={() => history.push(`/lists/${listId}`)}
+      onClick={() => history.push(`/lists/${id}`)}
     >
       <div className="tasklist-text">
         <Headline6 text={name} />

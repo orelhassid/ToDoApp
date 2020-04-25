@@ -1,7 +1,17 @@
+:root {
+  --bg: #242526;
+  --bg-accent: #484a4d;
+  --text-color: #dadce1;
+  --nav-size: 60px;
+  --border: 1px solid #474a4d;
+  --border-radius: 8px;
+  --speed: 500ms;
+}
+
 .Screen {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 100px;
+  grid-template-rows: 150px;
   grid-template-areas: "header" "actionbar" "body";
 }
 
@@ -10,16 +20,56 @@ header.page-header {
   width: 100vw;
   flex-flow: column;
   grid-area: header;
-  padding: 15px;
 }
 
-header.page-header .page-top {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+/* Navigation Bar */
+nav.page-nanbar {
+  height: var(--nav-size);
+  padding: 0 1rem;
 }
+/* <ul> */
+.navbar-nav {
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* <li> */
+.nav-item {
+  width: calc(var(--nav-size) * 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon Button */
+.icon-button {
+  --button-size: calc(var(--nav-size) * 0.5);
+  width: var(--button-size);
+  height: var(--button-size);
+  background-color: #272b38;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+}
+
+.icon-button:hover {
+  filter: brightness(1.2);
+}
+
+.icon-button svg {
+  fill: var(--text-color);
+  width: 20px;
+  height: 20px;
+}
+
 .page-title {
-  padding: 0 20px;
+  padding: 10px 20px;
   text-transform: capitalize;
 }
 

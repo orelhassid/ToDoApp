@@ -1,6 +1,5 @@
 import React from "react";
-import Body from "./layout/body";
-import Header from "./layout/header";
+import { Header, Actionbar, Body } from "./layout";
 import Avatar from "../assets/avatars/avatar-lion.png";
 
 const UserPage = () => {

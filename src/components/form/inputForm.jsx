@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { ReactComponent as AddIcon } from "../../assets/icons/add.svg";
 import "./form.css";
-import { TodoContext } from "./../../contexts/todoContext";
 
 const InputForm = ({ placeholder, onSubmit }) => {
   const [inputValue, setinputValue] = useState("");
@@ -12,7 +11,11 @@ const InputForm = ({ placeholder, onSubmit }) => {
     onSubmit(inputValue);
   };
   return (
-    <form className="form form-single" onSubmit={handleSubmit}>
+    <form
+      className="form form-single"
+      onSubmit={handleSubmit}
+      autoComplete={"off"}
+    >
       <input
         onChange={(e) => setinputValue(e.target.value)}
         className="input input-single"

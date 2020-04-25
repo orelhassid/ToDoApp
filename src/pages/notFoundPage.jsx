@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../components/buttons/button";
-import Body from "./layout/body";
+import { Body } from "./layout";
 
 const NotFoundPage = (props) => {
   const handleClick = () => {

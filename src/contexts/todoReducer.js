@@ -1,64 +1,58 @@
 import { v4 as uuid } from "uuid";
-
 export const TodoReducer = (state, action) => {
-  let lists = [...state]; // Making a new reference from state
-  const index = lists.indexOf(action.list); // Use it for change list directly
-  const list = { ...state[index] };
-  let tasks, task, taskModel;
+  /**
+   * Interface:
+   * State = lists array
+   * Action = list, task
+   */
+  const list = state.find((list) => list.id === action.list.id);
+  const index = state.indexOf(list);
+
+  if (action.task) {
+    const task = list.tasks.find((task) => task.id === action.task.id);
+    const tasks = state[index].tasks;
+    const taskIndex = tasks.indexOf(task);
+
+    switch (action.type) {
+      case "addTask":
+        const taskModel = {
+          id: uuid(),
+          isChecked: false,
+          ...action.task,
+        };
+        state[index].tasks.push(taskModel);
+
+        return;
+
+      case "removeTask":
+        state[index].tasks = tasks.filter((task) => task.id !== action.task.id);
+        return;
+
+      case "updateTask":
+        state[index].tasks[taskIndex] = action.task;
+        return;
+      default:
+        throw new Error();
+    }
+  }
 
   switch (action.type) {
     case "add":
-      console.log(action.list);
-      return [
-        ...lists,
-        {
-          id: uuid(),
-          name: action.list.name,
-          desc: action.list.desc,
-          tasks: [],
-        },
-      ];
+      if (action.list.name === "") return;
+      state.push({
+        id: uuid(),
+        name: action.list.name,
+        desc: action.list.desc,
+        tasks: [],
+      });
+      return;
+
     case "remove":
-      return lists.filter((list) => list.id !== action.listId);
+      return state.filter((list) => list.id !== action.list.id);
 
     case "update":
-      lists[index] = action.list;
-      return lists;
-
-    case "addTask":
-      tasks = [...state[index].tasks];
-      const { name, status, listId } = action.task;
-      taskModel = {
-        id: uuid(),
-        listId,
-        name,
-        status,
-        isChecked: status === "completed" ? true : false,
-      };
-      tasks.push(taskModel);
-      list.tasks = tasks;
-      lists[index] = list;
-      return lists;
-
-    case "removeTask":
-      tasks = [...state[index].tasks];
-      tasks = tasks.filter((task) => task.id !== action.task.id);
-      list.tasks = tasks;
-      lists[index] = list;
-      return lists;
-
-    case "updateTask":
-      action.task.isChecked
-        ? (action.task.status = "Completed")
-        : (action.task.status = "To-Do");
-      tasks = [...state[index].tasks];
-      task = tasks.find((task) => task.id === action.task.id);
-      const taskIndex = tasks.indexOf(task);
-      tasks[taskIndex] = action.task;
-      list.tasks = tasks;
-      lists[index] = list;
-      return lists;
-
+      // lists[index] = action.list;
+      return;
     default:
       throw new Error();
   }

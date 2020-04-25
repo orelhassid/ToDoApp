@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Header, Body, Actionbar } from "./layout/layout";
+import { Header, Body, Actionbar } from "./layout";
 
 import ListCard from "./../components/cards/listCard";
 import InputForm from "../components/form/inputForm";
@@ -23,9 +23,9 @@ const HomePage = () => {
   };
 
   const addListName = (listName) => {
-    console.log({ listName });
     const list = {
       name: listName,
+      tasks: [],
     };
     dispatch({ type: "add", list });
   };
@@ -40,12 +40,7 @@ const HomePage = () => {
       <Body>
         <ul className="cards-container">
           {lists.map((list) => (
-            <ListCard
-              key={list.id}
-              listId={list.id}
-              name={list.name}
-              desc={list.desc}
-            />
+            <ListCard key={list.id} list={list} />
           ))}
         </ul>
       </Body>

@@ -18,7 +18,7 @@ function App() {
           <div className="App Screen">
             <Switch>
               <Route path="/notfound" component={NotFoundPage} />
-              <Route path="/tasks" component={TasksPage} />
+              <Route path="/tasks/:filter?" component={TasksPage} />
 
               <Route path="/lab" component={LabPage} />
               <Route path="/lists/:id" component={ListPage} />

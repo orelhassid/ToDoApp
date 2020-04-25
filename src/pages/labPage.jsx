@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Header, Body, Actionbar } from "./layout/layout";
+import { Header, Body, Actionbar } from "./layout";
 import { TodoContext } from "../contexts/todoContext";
 
 const LabPage = () => {

@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
-import Header from "./layout/header";
-import Actionbar from "./layout/actionbar";
-import Body from "./layout/body";
+import { Header, Body, Actionbar } from "./layout";
 import InputForm from "../components/form/inputForm";
 import FAB from "../components/buttons/fab";
 import TaskCard from "./../components/cards/taskCard";
 import { TodoContext } from "./../contexts/todoContext";
 
 const ListPage = ({ match, history }) => {
-  const { lists, getList, dispatch } = useContext(TodoContext);
+  const { getList, dispatch } = useContext(TodoContext);
 
   const listId = match.params.id;
   const list = getList(listId);
@@ -30,12 +28,12 @@ const ListPage = ({ match, history }) => {
   };
 
   const onTaskChange = (task) => {
+    task.isChecked ? (task.status = "Completed") : (task.status = "To-Do");
+
     if (task.name === "") {
-      console.log("Timneout", task);
-      console.log("Timneout", list);
-      setTimeout((list, task) => {
-        return dispatch({ type: "removeTask", list, task });
-      }, 1000);
+      return dispatch({ type: "removeTask", list, task });
+      // setTimeout((list, task) => {
+      // }, 1000);
     } else dispatch({ type: "updateTask", list, task });
   };
   return (
