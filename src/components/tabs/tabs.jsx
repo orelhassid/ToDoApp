@@ -10,7 +10,7 @@ const Tabs = ({ tabs, filterKey, onTabChange }) => {
   return (
     <ul className="tabs-container" onClick={() => onTabChange()}>
       {tabsItems.map((item) => (
-        <TabsItem item={item} filterKey={filterKey} />
+        <TabsItem key={item.id} item={item} filterKey={filterKey} />
       ))}
     </ul>
   );
@@ -25,7 +25,7 @@ const TabsItem = ({ item, onClick, filterKey }) => {
         if (item.filter === filterKey) return true;
       }}
     >
-      <caption>{item.label}</caption>
+      <span>{item.label}</span>
     </NavLink>
   );
 };

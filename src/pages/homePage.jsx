@@ -12,7 +12,7 @@ const HomePage = () => {
   const [isFormOpen, setFormDisplay] = useState(false);
 
   const handleTaskList = () => {
-    document.body.style.pointerEvents = "none";
+    document.body.style.pointerEvents = !document.body.style.pointerEvents;
     setFormDisplay(!isFormOpen);
   };
 
@@ -45,7 +45,9 @@ const HomePage = () => {
         </ul>
       </Body>
       <FAB onClick={handleTaskList} />
-      {isFormOpen && <TaskListForm onSubmit={handleForm} />}
+      {isFormOpen && (
+        <TaskListForm onSubmit={handleForm} onCloseForm={handleTaskList} />
+      )}
     </React.Fragment>
   );
 };

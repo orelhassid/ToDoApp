@@ -5,14 +5,18 @@
   grid-gap: 20px;
 }
 
+/* Tasks List */
 .card-tasklist {
   position: relative;
+  margin-bottom: 10px;
+}
+.card-tasklist .surface {
   display: flex;
+  height: 72px;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  position: relative;
   padding: 0 17px 0 30px;
-  height: 72px;
   background: #272b38;
   box-shadow: 0 10px 6px rgba(25, 30, 47, 0.32);
 }
@@ -21,6 +25,21 @@
   display: flex;
   flex-flow: column;
 }
+
+.taskList-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  background: #242834;
+  border-radius: 50%;
+}
+
+/* Task Card */
 
 .taskcard {
   display: grid;
@@ -54,19 +73,10 @@
   background: none;
   width: 100%;
 }
-
-.taskList-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 7px;
-  background: #242834;
-  border-radius: 50%;
-}
 .dropbox {
   position: absolute;
-  top: 70%;
-  right: 10px;
+  top: 100%;
+  right: 0px;
   width: 120px;
   max-width: 200px;
   height: auto;
@@ -76,6 +86,7 @@
 .dropbox-list {
   display: flex;
   flex-flow: column;
+  user-select: none;
 }
 .dropbox-item {
   display: flex;
@@ -120,4 +131,9 @@
 
 .status-to-do {
   background: #4186ff;
+}
+
+.card-tasklist .surface:hover {
+  transition: filter 300ms;
+  filter: brightness(1.2);
 }

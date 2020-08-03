@@ -3,7 +3,7 @@ import Input from "./input";
 import { Headline6 } from "./../typography/typography";
 import Button from "../buttons/button";
 
-const TaskListForm = ({ onSubmit }) => {
+const TaskListForm = ({ onSubmit, onCloseForm }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
 
@@ -34,6 +34,9 @@ const TaskListForm = ({ onSubmit }) => {
         onChange={(e) => setDesc(e.target.value)}
       />
       <Button type="submit" value="Create List" />
+      <div onClick={onCloseForm} className="btn-close">
+        X
+      </div>
     </form>
   );
 };

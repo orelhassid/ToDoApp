@@ -7,11 +7,18 @@ import { ReactComponent as More } from "../../assets/icons/more_horiz.svg";
 import Dropbox from "../form/dropbox";
 import { TodoContext } from "../../contexts/todoContext";
 
+import { ReactComponent as TrashIcon } from "../../assets/icons/trash.svg";
+import { ReactComponent as EditIcon } from "../../assets/icons/edit.svg";
+
 const ListCard = ({ list }) => {
   const { name, desc, id } = list;
   const history = useHistory();
   const [dropbox, setDropbox] = useState(false);
   const { dispatch } = useContext(TodoContext);
+  const items = [
+    { id: 1, label: "Delete", event: "onDelete", icon: <TrashIcon /> },
+    { id: 2, label: "Edit", event: "onEdit", icon: <EditIcon /> },
+  ];
 
   const handleTaskListIcon = (e) => {
     e.stopPropagation();
@@ -26,12 +33,14 @@ const ListCard = ({ list }) => {
   };
   return (
     <div
-      className="card-tasklist pointer hover"
+      className="card-tasklist pointer"
       onClick={() => history.push(`/lists/${id}`)}
     >
-      <div className="tasklist-text">
-        <Headline6 text={name} />
-        <TextCaption text={desc} />
+      <div className="surface hover">
+        <div className="tasklist-text">
+          <Headline6 text={name} />
+          <TextCaption text={desc} />
+        </div>
       </div>
       <div
         className="taskList-icon pointer"
@@ -39,7 +48,14 @@ const ListCard = ({ list }) => {
       >
         <More />
       </div>
-      {dropbox && <Dropbox onClick={handleListActions} />}
+      {dropbox && (
+        <Dropbox
+          onClick={handleListActions}
+          items={items}
+          onDelete={console.log("Delete")}
+          onEdit={console.log("Edit")}
+        />
+      )}
     </div>
   );
 };
