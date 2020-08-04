@@ -5,7 +5,7 @@ import { ReactComponent as HomeIcon } from "../assets/icons/home.svg";
 import { ReactComponent as TasksIcon } from "../assets/icons/tasks.svg";
 import { Link } from "react-router-dom";
 
-export const Header = ({ title }) => {
+export const Header = ({ title, desc }) => {
   return (
     <header className="page-header">
       <Navbar>
@@ -15,6 +15,7 @@ export const Header = ({ title }) => {
       </Navbar>
       <div className="page-title">
         <h5>{title}</h5>
+        <p>{desc}</p>
       </div>
     </header>
   );

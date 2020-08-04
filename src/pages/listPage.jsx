@@ -36,9 +36,10 @@ const ListPage = ({ match, history }) => {
       // }, 1000);
     } else dispatch({ type: "updateTask", list, task });
   };
+  console.log(list.desc);
   return (
     <React.Fragment>
-      <Header title={list.name} />
+      <Header title={list.name} desc={list.desc} />
       <Actionbar>
         <InputForm placeholder="My new task is..." onSubmit={handleAddTask} />
       </Actionbar>

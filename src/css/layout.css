@@ -72,6 +72,10 @@ nav.page-nanbar {
   padding: 10px 20px;
   text-transform: capitalize;
 }
+.page-title p {
+  opacity: 0.5;
+  text-transform: lowercase;
+}
 
 /*
  * Action Bar
