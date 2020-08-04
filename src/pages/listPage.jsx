@@ -21,14 +21,14 @@ const ListPage = ({ match, history }) => {
     if (taskName === "") return;
     const task = {
       name: taskName,
-      status: "To-Do",
+      status: "todo",
       listId,
     };
     dispatch({ type: "addTask", list, task });
   };
 
   const onTaskChange = (task) => {
-    task.isChecked ? (task.status = "Completed") : (task.status = "To-Do");
+    task.isChecked ? (task.status = "completed") : (task.status = "todo");
 
     if (task.name === "") {
       return dispatch({ type: "removeTask", list, task });

@@ -1,42 +1,44 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Header, Body, Actionbar } from "./layout";
 import { TodoContext } from "../contexts/todoContext";
 import TaskCard from "../components/cards/taskCard";
 import Tabs from "../components/tabs/tabs";
 import queryString from "query-string";
 
-const TasksPage = ({ location }) => {
-  const { tasks, getList, dispatch, filterTasks } = useContext(TodoContext);
-  let { f: filterKey } = queryString.parse(location.search);
-  if (!filterKey) filterKey = "all";
+const TasksPage = () => {
+  const { tasks, getList, dispatch } = useContext(TodoContext);
+
+  const [tasksList, setTasksList] = useState(tasks);
+
   const tabs = [
-    { id: 1, label: "All", filter: "all" },
-    { id: 2, label: "Completed", filter: "completed" },
-    { id: 3, label: "To-Do", filter: "todo" },
+    { id: 1, label: "All", filterKey: "all", isActive: true },
+    { id: 2, label: "Completed", filterKey: "completed", isActive: false },
+    { id: 3, label: "To-Do", filterKey: "todo", isActive: false },
   ];
 
-  const onTaskChange = (taskObj) => {
-    const list = getList(taskObj.listId);
-    let task = { ...taskObj };
-    task.isChecked ? (task.status = "Completed") : (task.status = "To-Do");
+  const onTaskChange = (task) => {
+    const list = getList(task.listId);
+    console.log({ list });
+    console.log({ task });
 
-    if (task.name === "") {
-      return dispatch({ type: "removeTask", list, task });
-    } else dispatch({ type: "updateTask", list, task });
+    dispatch({ type: "updateTask", list, task });
+  };
+
+  const onTabChange = (filterKey) => {
+    if (filterKey === "all") return setTasksList(tasks);
+    setTasksList(tasks.filter((task) => task.status === filterKey));
   };
   return (
     <React.Fragment>
       <Header title="All Tasks" />
+
       <Actionbar>
-        <Tabs
-          tabs={tabs}
-          filterKey={filterKey}
-          onTabChange={() => filterTasks(filterKey)}
-        />
+        <Tabs tabs={tabs} onTabChange={onTabChange} />
       </Actionbar>
+
       <Body>
         <ul className="cards-container">
-          {tasks.map((task) => (
+          {tasksList.map((task) => (
             <TaskCard key={task.id} task={task} onChange={onTaskChange} />
           ))}
         </ul>

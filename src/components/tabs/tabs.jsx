@@ -1,32 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./tabs.css";
-import { Link, NavLink } from "react-router-dom";
 
-const Tabs = ({ tabs, filterKey, onTabChange }) => {
-  const [tabsItems, setTabsItems] = useState([]);
-  useEffect(() => {
-    setTabsItems(tabs);
-  });
+const Tabs = ({ tabs, onTabChange }) => {
+  const [tabsItems, setTabsItems] = useState(tabs);
+
+  const handleTabClicked = (item) => {
+    for (let item of tabsItems) item.isActive = false;
+
+    const index = tabsItems.indexOf(item);
+    tabsItems[index].isActive = true;
+
+    onTabChange(item.filterKey);
+  };
+
   return (
-    <ul className="tabs-container" onClick={() => onTabChange()}>
+    <ul className="tabs-container">
       {tabsItems.map((item) => (
-        <TabsItem key={item.id} item={item} filterKey={filterKey} />
+        <li
+          key={item.id}
+          className={
+            item.isActive ? "tabs-items pointer active" : "tabs-items pointer"
+          }
+          onClick={() => handleTabClicked(item)}
+        >
+          <span>{item.label}</span>
+        </li>
       ))}
     </ul>
   );
 };
 
-const TabsItem = ({ item, onClick, filterKey }) => {
-  return (
-    <NavLink
-      to={`/tasks?f=${item.filter}`}
-      className="tabs-items"
-      isActive={(match, location) => {
-        if (item.filter === filterKey) return true;
-      }}
-    >
-      <span>{item.label}</span>
-    </NavLink>
-  );
-};
 export default Tabs;
