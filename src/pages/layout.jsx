@@ -14,8 +14,8 @@ export const Header = ({ title, desc }) => {
         <NavItem icon={<AvatarLion />} link="/me" />
       </Navbar>
       <div className="page-title">
-        <h5>{title}</h5>
-        <p>{desc}</p>
+        <h5 className="title">{title}</h5>
+        <p className="description">{desc}</p>
       </div>
     </header>
   );

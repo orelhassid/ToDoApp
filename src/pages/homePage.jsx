@@ -26,6 +26,7 @@ const HomePage = () => {
     const list = {
       name: listName,
       tasks: [],
+      desc: "",
     };
     dispatch({ type: "add", list });
   };

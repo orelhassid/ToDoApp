@@ -32,11 +32,11 @@ const ListCard = ({ list }) => {
     dispatch({ type: "remove", list });
   };
   return (
-    <div
-      className="card-tasklist pointer"
-      onClick={() => history.push(`/lists/${id}`)}
-    >
-      <div className="surface hover">
+    <div className="card-tasklist pointer">
+      <div
+        className="surface hover"
+        onClick={() => history.push(`/lists/${id}`)}
+      >
         <div className="tasklist-text">
           <Headline6 text={name} />
           <TextCaption text={desc} />

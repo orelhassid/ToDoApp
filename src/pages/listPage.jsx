@@ -36,10 +36,33 @@ const ListPage = ({ match, history }) => {
       // }, 1000);
     } else dispatch({ type: "updateTask", list, task });
   };
-  console.log(list.desc);
+
+  const inputDescription = () => {
+    return (
+      <input
+        type="text"
+        placeholder={list.desc || "Click here to add description"}
+        onChange={onListDescChange}
+      />
+    );
+  };
+
+  const onListDescChange = ({ target }) => {
+    dispatch({ type: "editListDesc", list, desc: target.value });
+  };
+
+  const inputName = () => {
+    return (
+      <input type="text" placeholder={list.name} onChange={onListNameChange} />
+    );
+  };
+  const onListNameChange = ({ target }) => {
+    dispatch({ type: "editListName", list, name: target.value });
+  };
+
   return (
     <React.Fragment>
-      <Header title={list.name} desc={list.desc} />
+      <Header title={inputName()} desc={inputDescription()} />
       <Actionbar>
         <InputForm placeholder="My new task is..." onSubmit={handleAddTask} />
       </Actionbar>
@@ -50,7 +73,7 @@ const ListPage = ({ match, history }) => {
           ))}
         </ul>
       </Body>
-      <FAB />
+      {/* <FAB onClick={() => console.log("Edit List")} /> */}
     </React.Fragment>
   );
 };

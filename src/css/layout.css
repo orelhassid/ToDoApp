@@ -72,9 +72,21 @@ nav.page-nanbar {
   padding: 10px 20px;
   text-transform: capitalize;
 }
-.page-title p {
+.page-title .description {
   opacity: 0.5;
   text-transform: lowercase;
+  font-size: 16px;
+  font-family: "Quicksand";
+  color: rgb(245, 245, 245);
+}
+
+.page-title .title input {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+.page-title .title input::placeholder {
+  color: inherit;
 }
 
 /*

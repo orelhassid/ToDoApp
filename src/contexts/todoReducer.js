@@ -31,6 +31,7 @@ export const TodoReducer = (state, action) => {
       case "updateTask":
         state[index].tasks[taskIndex] = action.task;
         return;
+
       default:
         throw new Error();
     }
@@ -52,6 +53,13 @@ export const TodoReducer = (state, action) => {
 
     case "update":
       // lists[index] = action.list;
+      return;
+
+    case "editListDesc":
+      state[index].desc = action.desc;
+      return;
+    case "editListName":
+      state[index].name = action.name;
       return;
     default:
       throw new Error();
