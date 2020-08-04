@@ -38,7 +38,7 @@ const TasksPage = () => {
       <Body>
         <ul className="cards-container">
           {tasksList.map((task) => (
-            <TaskCard key={task.id} task={task} onChange={onTaskChange} />
+            <TaskCard key={task.id} task={task} />
           ))}
         </ul>
         {!tasksList && <NoTasksPage />}

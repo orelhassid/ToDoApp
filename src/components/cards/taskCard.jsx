@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { TodoContext } from "../../contexts/todoContext";
+
 import "./cards.css";
 
 const TaskCard = (props) => {
+  const { getList, dispatch } = useContext(TodoContext);
+
   let [task, setTask] = useState(props.task);
   const { name, status, isChecked } = task;
 
@@ -9,7 +13,13 @@ const TaskCard = (props) => {
     const newTask = { ...task };
     newTask[input.name] = input.value;
     setTask(newTask);
-    props.onChange(newTask);
+
+    const list = getList(newTask.listId);
+
+    if (newTask.name === "")
+      return dispatch({ type: "removeTask", list, task });
+
+    dispatch({ type: "updateTask", list, task });
   };
   return (
     <div className={`taskcard`}>
