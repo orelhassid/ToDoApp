@@ -1,5 +1,4 @@
 import React from "react";
-import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import { ReactComponent as AvatarLion } from "../assets/icons/avatar-lion.svg";
 import { ReactComponent as HomeIcon } from "../assets/icons/home.svg";
 import { ReactComponent as TasksIcon } from "../assets/icons/tasks.svg";

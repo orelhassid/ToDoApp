@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { ReactComponent as TrashIcon } from "../../assets/icons/trash.svg";
-import { ReactComponent as EditIcon } from "../../assets/icons/edit.svg";
+// import { ReactComponent as EditIcon } from "../../assets/icons/edit.svg";
 
 const Dropbox = ({ onDelete, onEdit }) => {
   const items = [

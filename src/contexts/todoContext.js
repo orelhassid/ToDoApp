@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import TodoReducer, { TasksReducer } from "./todoReducer";
+import TodoReducer from "./todoReducer";
 import { useImmerReducer } from "use-immer";
 
 export const TodoContext = createContext();

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Header, Body, Actionbar } from "./layout";
 import InputForm from "../components/form/inputForm";
-import FAB from "../components/buttons/fab";
 import TaskCard from "./../components/cards/taskCard";
 import { TodoContext } from "./../contexts/todoContext";
 
@@ -73,7 +72,6 @@ const ListPage = ({ match, history }) => {
           ))}
         </ul>
       </Body>
-      {/* <FAB onClick={() => console.log("Edit List")} /> */}
     </React.Fragment>
   );
 };

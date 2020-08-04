@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../components/buttons/button";
 import { Body } from "./layout";
-import Bug from "../components/Icons/Bug";
 
 const NotFoundPage = (props) => {
   const handleClick = () => {

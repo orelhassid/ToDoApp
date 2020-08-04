@@ -3,7 +3,8 @@ import { Header, Body, Actionbar } from "./layout";
 import { TodoContext } from "../contexts/todoContext";
 import TaskCard from "../components/cards/taskCard";
 import Tabs from "../components/tabs/tabs";
-import queryString from "query-string";
+import Button from "../components/buttons/button";
+import { Link } from "react-router-dom";
 
 const TasksPage = () => {
   const { tasks, getList, dispatch } = useContext(TodoContext);
@@ -18,8 +19,6 @@ const TasksPage = () => {
 
   const onTaskChange = (task) => {
     const list = getList(task.listId);
-    console.log({ list });
-    console.log({ task });
 
     dispatch({ type: "updateTask", list, task });
   };
@@ -42,9 +41,22 @@ const TasksPage = () => {
             <TaskCard key={task.id} task={task} onChange={onTaskChange} />
           ))}
         </ul>
+        {!tasksList && <NoTasksPage />}
       </Body>
     </React.Fragment>
   );
 };
 
+const NoTasksPage = () => {
+  return (
+    <section className="text-center">
+      <h3>No Tasks yet</h3>
+      <p>Start to create</p>
+      <br />
+      <Link to="/">
+        <Button value="Tasks Page" />
+      </Link>
+    </section>
+  );
+};
 export default TasksPage;
