@@ -7,29 +7,30 @@ import { ReactComponent as More } from "../../assets/icons/more_horiz.svg";
 import Dropbox from "../form/dropbox";
 import { TodoContext } from "../../contexts/todoContext";
 
-import { ReactComponent as TrashIcon } from "../../assets/icons/trash.svg";
-import { ReactComponent as EditIcon } from "../../assets/icons/edit.svg";
-
 const ListCard = ({ list }) => {
   const { name, desc, id } = list;
   const history = useHistory();
-  const [dropbox, setDropbox] = useState(false);
   const { dispatch } = useContext(TodoContext);
-  const items = [
-    { id: 1, label: "Delete", event: "onDelete", icon: <TrashIcon /> },
-    { id: 2, label: "Edit", event: "onEdit", icon: <EditIcon /> },
-  ];
 
-  const handleTaskListIcon = (e) => {
-    e.stopPropagation();
-    setDropbox(!dropbox);
-  };
+  const [dropdown, setDropdown] = useState(false);
 
   const handleListActions = (e, action) => {
     e.stopPropagation();
-    setDropbox(!dropbox);
+    setDropdown(!dropdown);
     //Remove the list
+    // dispatch({ type: "remove", list });
+  };
+  const showDropdown = (e) => {
+    e.stopPropagation();
+    setDropdown(!dropdown);
+  };
+  const onDeleteList = () => {
+    console.log("Delete", list);
     dispatch({ type: "remove", list });
+  };
+
+  const onEditList = () => {
+    console.log("Edit", list);
   };
   return (
     <div className="card-tasklist pointer">
@@ -42,18 +43,14 @@ const ListCard = ({ list }) => {
           <TextCaption text={desc} />
         </div>
       </div>
-      <div
-        className="taskList-icon pointer"
-        onClick={(e) => handleTaskListIcon(e)}
-      >
+      <div className="taskList-icon pointer" onClick={(e) => showDropdown(e)}>
         <More />
       </div>
-      {dropbox && (
+      {dropdown && (
         <Dropbox
           onClick={handleListActions}
-          items={items}
-          onDelete={console.log("Delete")}
-          onEdit={console.log("Edit")}
+          onDelete={onDeleteList}
+          onEdit={onEditList}
         />
       )}
     </div>

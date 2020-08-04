@@ -1,31 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { ReactComponent as TrashIcon } from "../../assets/icons/trash.svg";
 import { ReactComponent as EditIcon } from "../../assets/icons/edit.svg";
 
-const Dropbox = ({ items, onDelete, onEdit }) => {
+const Dropbox = ({ onDelete, onEdit }) => {
+  const items = [
+    { id: 1, label: "Delete", event: onDelete, icon: <TrashIcon /> },
+    // { id: 2, label: "Edit", event: onEdit, icon: <EditIcon /> },
+  ];
+
   return (
     <div className="dropbox">
       <ul className="dropbox-list">
         {items.map((item) => (
-          <li
-            className="dropbox-item"
-            key={item.id}
-            onClick={(e) => item.event}
-          >
-            <span>{item.icon}</span>
-            <span>{item.label}</span>
-          </li>
+          <ListItem key={item.id} item={item} />
         ))}
       </ul>
     </div>
   );
 };
-
-Dropbox.defaultProps = {
-  items: [
-    { id: 1, label: "Delete", icon: <TrashIcon /> },
-    { id: 2, label: "Edit", icon: <EditIcon /> },
-  ],
+const ListItem = ({ item }) => {
+  return (
+    <li className="dropbox-item" key={item.id} onClick={() => item.event()}>
+      <span>{item.icon}</span>
+      <span>{item.label}</span>
+    </li>
+  );
 };
 
 export default Dropbox;
